@@ -1,10 +1,13 @@
 package app.models;
 
+import app.AvailableSize;
+import app.BeverageType;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
@@ -16,7 +19,7 @@ public class MenuItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Float price;
+    private BigDecimal price;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
@@ -24,9 +27,12 @@ public class MenuItem {
     @ManyToOne
     @JoinColumn(name = "cafe_id")
     private Cafe cafe;
-    @ManyToOne
-    @JoinColumn(name = "beverage_id")
-    private Beverage beverage;
+    private Enum<BeverageType> type;
+    private Enum<AvailableSize> size;
+    private boolean isAppendage;
+    private boolean isIced;
+    private String capacity;
+
 
 
 
