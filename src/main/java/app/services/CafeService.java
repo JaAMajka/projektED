@@ -23,7 +23,7 @@ public class CafeService {
         }
         return cafeRepository.save(cafe);
     }
-    public Cafe getCafeById(Long id){
+    private Cafe getCafeById(Long id){
         return cafeRepository.findById(id).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
     }
     public void deleteCafeById(Long id){

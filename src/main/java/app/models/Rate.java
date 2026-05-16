@@ -10,14 +10,13 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "rates")
 public class Rate {
-    @EmbeddedId
-    private RateId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @ManyToOne
-    @MapsId("userId")
     @JoinColumn(name = "user_id")
     private User author;
     @ManyToOne
-    @MapsId("cafeId")
     @JoinColumn(name = "cafe_id")
     private Cafe cafe;
     private Integer beverageScore;

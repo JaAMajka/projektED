@@ -1,6 +1,13 @@
 package app.dtos.responding;
 
-import app.models.RateId;
+import java.time.LocalDateTime;
 
-public record ResponseRateDTO(RateId rateId, Long authorId, Long cafeId, Long beverageScore, Long serviceScore, Long atmosphereScore) {
+public record ResponseRateDTO(
+        Long Id,
+        Long authorId,
+        Long cafeId,
+        Integer beverageScore,
+        Integer serviceScore,
+        Integer atmosphereScore,
+        LocalDateTime createdAt) {
 }

@@ -5,11 +5,14 @@ import app.dtos.updating.UpdateRateDTO;
 import app.models.MenuItem;
 import app.models.Rate;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface RateMapper {
-    MenuItem toEntity(CreateRateDTO dto);
+    @Mapping(target = "cafe", ignore = true)
+    @Mapping(target = "user", ignore = true)
+    Rate toEntity(CreateRateDTO dto);
     void updateRateFromDto(UpdateRateDTO dto, @MappingTarget Rate rate);
     ResponseRateDTO toDto(Rate menuItem);
 

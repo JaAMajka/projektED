@@ -1,4 +1,11 @@
 package app.dtos.updating;
 
-public record UpdateUserDTO(String username, String email, String password, Boolean isStudent, Boolean prefersCardPayment) {
+import jakarta.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
+
+public record UpdateUserDTO(
+        @NotEmpty String name,
+        @NotEmpty String email,
+        @NotEmpty @Length(min = 8) String password,
+        Boolean isStudent, Boolean prefersCardPayment) {
 }

@@ -1,4 +1,9 @@
 package app.dtos.updating;
 
-public record UpdateRecommendationDTO() {
+import jakarta.validation.constraints.NotNull;
+
+public record UpdateRecommendationDTO(
+        @NotNull Long id,
+        @NotNull Long userId,
+        @NotNull Long cafeId) {
 }

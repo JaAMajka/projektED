@@ -1,6 +1,10 @@
 package app.dtos.updating;
 
-import app.models.RateId;
+import jakarta.validation.constraints.NotNull;
 
-public record UpdateRateDTO(RateId rateId, Long authorId, Long cafeId, Long beverageScore, Long serviceScore, Long atmosphereScore) {
+public record UpdateRateDTO(
+        @NotNull Long id,
+        @NotNull Long authorId,
+        @NotNull Long cafeId,
+        Long beverageScore, Long serviceScore, Long atmosphereScore) {
 }

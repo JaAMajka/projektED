@@ -1,4 +1,13 @@
 package app.dtos.responding;
 
-public record ResponseScheduleDTO() {
+import app.Weekday;
+
+import java.time.LocalTime;
+
+public record ResponseScheduleDTO(
+        Long id,
+        Long cafeId,
+        Weekday dayOfWeek,
+        LocalTime openingHour,
+        LocalTime closingHour) {
 }

@@ -9,10 +9,12 @@ import app.dtos.updating.UpdateScheduleDTO;
 import app.models.MenuItem;
 import app.models.Schedule;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface ScheduleMapper {
+    @Mapping(target = "cafe", ignore = true)
     Schedule toEntity(CreateScheduleDTO dto);
     void updateScheduleFromDto(UpdateScheduleDTO dto, @MappingTarget Schedule schedule);
     ResponseScheduleDTO toDto(Schedule schedule);
