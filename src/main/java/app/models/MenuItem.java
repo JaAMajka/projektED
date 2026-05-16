@@ -29,8 +29,8 @@ public class MenuItem {
     private Cafe cafe;
     private Enum<BeverageType> type;
     private Enum<AvailableSize> size;
-    private boolean isAppendage;
-    private boolean isIced;
+    private Boolean isAppendage;
+    private Boolean isIced;
     private String capacity;
 
 

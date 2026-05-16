@@ -1,0 +1,53 @@
+package app.services;
+
+import app.Exceptions.ItemAlreadyBelongsToCafeException;
+import app.Exceptions.ItemDoesNotBelongToCafeException;
+import app.Exceptions.MenuItemNotFoundException;
+import app.dtos.creating.CreateMenuItemDTO;
+import app.dtos.updating.UpdateMenuItemDTO;
+import app.mappers.MenuItemMapper;
+import app.models.Cafe;
+import app.models.MenuItem;
+import app.repositories.MenuItemRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+
+
+@Service
+@RequiredArgsConstructor
+public class MenuItemService {
+    private final MenuItemRepository menuItemRepository;
+    private final CafeService cafeService;
+    private final MenuItemMapper menuItemMapper;
+
+    public MenuItem getMenuItemById(Long cafeId, Long menuItemId) {
+        MenuItem menuItem = menuItemRepository.findById(menuItemId).orElseThrow(() -> new MenuItemNotFoundException("This item does not exist."));
+        if (menuItem.getCafe().getId().equals(cafeId)) {
+            return menuItem;
+        } else {
+            throw new ItemDoesNotBelongToCafeException("This item does not belong to this cafe");
+        }
+    }
+
+    public void removeMenuItemById(Long cafeId, Long menuItemId) {
+        MenuItem menuItem = getMenuItemById(cafeId, menuItemId);
+        menuItemRepository.delete(menuItem);
+    }
+
+    public MenuItem createMenuItem(CreateMenuItemDTO dto) {
+        MenuItem menuItem = menuItemMapper.toEntity(dto);
+        if (menuItemRepository.findByCafeAndName(menuItem.getCafe(), menuItem.getName()).isPresent()) {
+            throw new ItemAlreadyBelongsToCafeException("This item already exists in this cafe");
+        }
+        menuItem.setCafe(cafeService.getCafeById(dto.cafeId()));
+        return menuItemRepository.save(menuItem);
+    }
+
+    public MenuItem updateMenuItem(UpdateMenuItemDTO dto, Long cafeId, Long menuItemId) {
+        MenuItem menuItem = getMenuItemById(cafeId, menuItemId);
+        menuItemMapper.updateMenuItemFromDto(dto, menuItem);
+        return menuItemRepository.save(menuItem);
+
+    }
+}

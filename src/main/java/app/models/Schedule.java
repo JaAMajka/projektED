@@ -24,4 +24,7 @@ public class Schedule {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "cafe_id")
+    private Cafe cafe;
 }

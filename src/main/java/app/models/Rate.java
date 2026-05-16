@@ -15,7 +15,7 @@ public class Rate {
     @ManyToOne
     @MapsId("userId")
     @JoinColumn(name = "user_id")
-    private User user;
+    private User author;
     @ManyToOne
     @MapsId("cafeId")
     @JoinColumn(name = "cafe_id")
