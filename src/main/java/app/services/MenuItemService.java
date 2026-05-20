@@ -53,12 +53,12 @@ public class MenuItemService {
         return menuItemRepository.save(menuItem);
     }
 
-    public MenuItem updateMenuItem(UpdateMenuItemDTO dto, Long cafeId, Long menuItemId) {
+    public void updateMenuItem(UpdateMenuItemDTO dto, Long cafeId, Long menuItemId) {
         MenuItem menuItem = getMenuItemById(cafeId, menuItemId);
         menuItemMapper.updateMenuItemFromDto(dto, menuItem);
-        Cafe cafe = cafeRepository.findById(dto.cafeId()).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
+        Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
         menuItem.setCafe(cafe);
-        return menuItemRepository.save(menuItem);
+        menuItemRepository.save(menuItem);
 
     }
 }

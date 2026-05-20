@@ -1,5 +1,7 @@
 package app.dtos.responding;
 
+import app.AvailableSize;
+
 import java.math.BigDecimal;
 
 public record ResponseMenuItemDTO(
@@ -8,7 +10,7 @@ public record ResponseMenuItemDTO(
         String name,
         BigDecimal price,
         String beverageType,
-        String size,
+        Enum<AvailableSize> size,
         Boolean isAppendage,
         Boolean isIced,
         String capacity

@@ -11,7 +11,7 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface RateMapper {
     @Mapping(target = "cafe", ignore = true)
-    @Mapping(target = "user", ignore = true)
+    @Mapping(target = "author", ignore = true)
     Rate toEntity(CreateRateDTO dto);
     void updateRateFromDto(UpdateRateDTO dto, @MappingTarget Rate rate);
     ResponseRateDTO toDto(Rate menuItem);

@@ -1,7 +1,7 @@
 package app.services;
 
 import app.Exceptions.CafeNotFoundException;
-import app.Exceptions.RecommendationDoesNotBelongToCafeException;
+import app.Exceptions.RecommendationDoesNotBelongToUserException;
 import app.Exceptions.RecommendationNotFoundException;
 import app.Exceptions.UserNotFoundException;
 import app.dtos.creating.CreateRecommendationDTO;
@@ -17,6 +17,8 @@ import app.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RecommendationService {
@@ -26,22 +28,30 @@ public class RecommendationService {
     private final UserRepository userRepository;
 
 
-    public ResponseRecommendationDTO getRecommendationDtoById(Long id, Long cafeId, Long userId) {
-        return recommendationMapper.toDto(getRecommendationById(id, cafeId, userId));
+    public ResponseRecommendationDTO getRecommendationDtoById(Long id, Long userId) {
+        return recommendationMapper.toDto(getRecommendationById(id, userId));
     }
-    private Recommendation getRecommendationById(Long id, Long cafeId, Long userId) {
+    private Recommendation getRecommendationById(Long id, Long userId) {
         Recommendation recommendation = recommendationRepository.findById(id).orElseThrow(() -> new RecommendationNotFoundException("Recommendation not found"));
-        cafeRepository.findById(recommendation.getCafe().getId()).orElseThrow(() -> new CafeNotFoundException("Cafe not found"));
         userRepository.findById(recommendation.getUser().getId()).orElseThrow(() -> new UserNotFoundException("User not found"));
-        if(recommendation.getCafe().getId().equals(cafeId) && recommendation.getUser().getId().equals(userId)){
+        if(recommendation.getUser().getId().equals(userId)){
             return recommendation;
         } else {
-            throw new RecommendationDoesNotBelongToCafeException("Recommendation not found");
+            throw new RecommendationDoesNotBelongToUserException("Recommendation not found");
         }
     }
-    public void deleteRecommendationById(Long id, Long cafeId, Long userId) {
-        Recommendation recommendation = getRecommendationById(id, cafeId, userId);
+
+    public void deleteRecommendationById(Long id, Long userId) {
+        Recommendation recommendation = getRecommendationById(id, userId);
         recommendationRepository.delete(recommendation);
+    }
+    public List<ResponseRecommendationDTO> getRecommendationsByUserId(Long userId) {
+        userRepository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        return recommendationRepository.findAllByUserId(userId)
+                .stream()
+                .map(recommendationMapper::toDto)
+                .toList();
     }
     public Recommendation createRecommendation(CreateRecommendationDTO dto) {
         Recommendation recommendation = recommendationMapper.toEntity(dto);
@@ -51,9 +61,9 @@ public class RecommendationService {
         recommendation.setUser(user);
         return recommendationRepository.save(recommendation);
     }
-    public Recommendation updateRecommendation(UpdateRecommendationDTO dto, Long id) {
-        Recommendation recommendation = getRecommendationById(id, dto.cafeId(), dto.userId());
+    public void updateRecommendation(UpdateRecommendationDTO dto, Long recommendationId, Long userId) {
+        Recommendation recommendation = getRecommendationById(recommendationId, userId);
         recommendationMapper.updateRecommendationFromDto(dto, recommendation);
-        return recommendationRepository.save(recommendation);
+        recommendationRepository.save(recommendation);
     }
 }

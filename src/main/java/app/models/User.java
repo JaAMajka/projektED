@@ -22,7 +22,7 @@ public class User {
     private boolean prefersCardPayment;
     @CreationTimestamp
     private LocalDateTime createdAt;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "author")
     private List<Rate> rates;
     @OneToMany(mappedBy = "user")
     private List<Recommendation> recommendations;

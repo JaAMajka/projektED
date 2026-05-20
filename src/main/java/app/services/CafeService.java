@@ -3,6 +3,7 @@ package app.services;
 import app.Exceptions.CafeAlreadyExistsException;
 import app.Exceptions.CafeNotFoundException;
 import app.dtos.creating.CreateCafeDTO;
+import app.dtos.responding.ResponseCafeDTO;
 import app.dtos.updating.UpdateCafeDTO;
 import app.mappers.CafeMapper;
 import app.models.Cafe;
@@ -23,6 +24,9 @@ public class CafeService {
         }
         return cafeRepository.save(cafe);
     }
+    public ResponseCafeDTO getCafeDtoById(Long id){
+        return cafeMapper.toDto(getCafeById(id));
+    }
     private Cafe getCafeById(Long id){
         return cafeRepository.findById(id).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
     }
@@ -30,10 +34,11 @@ public class CafeService {
         Cafe cafe = getCafeById(id);
         cafeRepository.delete(cafe);
     }
-    public Cafe updateCafe(UpdateCafeDTO dto){
-        Cafe cafe = getCafeById(dto.id());
+    public void updateCafe(UpdateCafeDTO dto, Long id){
+        Cafe cafe = getCafeById(id);
         cafeMapper.updateCafeFromDto(dto, cafe);
-        return cafeRepository.save(cafe);
+        cafeRepository.save(cafe);
+
     }
 
 

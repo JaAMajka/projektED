@@ -29,10 +29,10 @@ public class UserService {
         User user = getUserById(id);
         userRepository.delete(user);
     }
-    public User updateUser(Long userId, UpdateUserDTO dto) {
+    public void updateUser(Long userId, UpdateUserDTO dto) {
         User user = getUserById(userId);
         userMapper.updateUserFromDto(dto, user);
-        return userRepository.save(user);
+        userRepository.save(user);
     }
     public User createUser(CreateUserDTO dto){
         User user = userMapper.toEntity(dto);

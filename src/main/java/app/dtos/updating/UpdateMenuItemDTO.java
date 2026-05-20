@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public record UpdateMenuItemDTO(
-        @NotNull Long id,
+
         @NotEmpty String name,
         @Positive BigDecimal price,
         @NotNull Long cafeId,

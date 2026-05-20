@@ -4,7 +4,7 @@ package app.mappers;
 import app.dtos.creating.CreateRecommendationDTO;
 import app.dtos.responding.ResponseRecommendationDTO;
 import app.dtos.updating.UpdateRecommendationDTO;
-import app.models.MenuItem;
+
 import app.models.Recommendation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

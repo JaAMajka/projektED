@@ -1,10 +1,9 @@
 package app.dtos.updating;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+
 
 public record UpdateCafeDTO(
-        @NotNull Long id,
         @NotEmpty String name,
         @NotEmpty String address,
         Boolean hasWifi,
