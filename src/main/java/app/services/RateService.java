@@ -4,6 +4,7 @@ import app.Exceptions.CafeNotFoundException;
 import app.Exceptions.RateNotFoundException;
 import app.dtos.creating.CreateRateDTO;
 import app.dtos.responding.ResponseRateDTO;
+import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateRateDTO;
 import app.mappers.RateMapper;
 import app.models.Rate;
@@ -11,6 +12,7 @@ import app.repositories.CafeRepository;
 import app.repositories.RateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -46,5 +48,13 @@ public class RateService {
         Rate rate = getRateById(rateId, cafeId);
         rateMapper.updateRateFromDto(dto, rate);
         rateRepository.save(rate);
+    }
+    public List<ResponseRateDTO> getRatesByCafeId(Long cafeId){
+        cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found."));
+        return rateRepository.findAllByCafeId(cafeId).
+                stream()
+                .map(rateMapper::toDto)
+                .toList();
+
     }
 }

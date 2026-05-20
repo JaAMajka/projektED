@@ -4,6 +4,7 @@ import app.dtos.creating.CreateCafeDTO;
 import app.dtos.creating.CreateMenuItemDTO;
 import app.dtos.responding.ResponseCafeDTO;
 import app.dtos.responding.ResponseMenuItemDTO;
+import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateCafeDTO;
 import app.dtos.updating.UpdateMenuItemDTO;
 import app.models.Cafe;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,5 +47,9 @@ public class MenuItemController {
         MenuItem menuItem = menuItemService.createMenuItem(dto);
         ResponseMenuItemDTO menuItemDto =  menuItemService.getMenuItemDtoById(cafeId, menuItem.getId());
         return new ResponseEntity<>(menuItemDto, HttpStatus.CREATED);
+    }
+    @GetMapping
+    public ResponseEntity<List<ResponseMenuItemDTO>> getMenuItemDtosByCafeId(@PathVariable Long cafeId) {
+        return new ResponseEntity<>(menuItemService.getMenuItemDtosByCafeId(cafeId), HttpStatus.OK);
     }
 }

@@ -3,6 +3,7 @@ import app.Exceptions.ActionNotAuthorizedException;
 import app.Role;
 import app.dtos.creating.CreateRateDTO;
 import app.dtos.responding.ResponseRateDTO;
+import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateRateDTO;
 import app.models.Rate;
 import app.security.MyUserDetails;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -63,5 +65,9 @@ public class RateController {
         Rate rate = rateService.createRate(dto);
         ResponseRateDTO rateDTO =  rateService.getRateDtoById(cafeId, rate.getId());
         return new ResponseEntity<>(rateDTO, HttpStatus.CREATED);
+    }
+    @GetMapping
+    public ResponseEntity<List<ResponseRateDTO>> getRatesByCafeId(@PathVariable Long cafeId) {
+        return new ResponseEntity<>(rateService.getRatesByCafeId(cafeId), HttpStatus.OK);
     }
 }

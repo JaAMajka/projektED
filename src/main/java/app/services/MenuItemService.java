@@ -6,6 +6,7 @@ import app.Exceptions.ItemDoesNotBelongToCafeException;
 import app.Exceptions.MenuItemNotFoundException;
 import app.dtos.creating.CreateMenuItemDTO;
 import app.dtos.responding.ResponseMenuItemDTO;
+import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateMenuItemDTO;
 import app.mappers.MenuItemMapper;
 import app.models.Cafe;
@@ -14,6 +15,7 @@ import app.repositories.CafeRepository;
 import app.repositories.MenuItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 
 
@@ -59,5 +61,13 @@ public class MenuItemService {
         Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
         menuItem.setCafe(cafe);
         menuItemRepository.save(menuItem);
+    }
+    public List<ResponseMenuItemDTO> getMenuItemDtosByCafeId(Long cafeId){
+        cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found."));
+        return menuItemRepository.findAllByCafeId(cafeId).
+                stream()
+                .map(menuItemMapper::toDto)
+                .toList();
+
     }
 }
