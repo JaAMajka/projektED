@@ -21,6 +21,9 @@ services:
     environment:
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+
     depends_on:
       db:
         condition: service_healthy

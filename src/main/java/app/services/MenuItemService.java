@@ -59,6 +59,5 @@ public class MenuItemService {
         Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
         menuItem.setCafe(cafe);
         menuItemRepository.save(menuItem);
-
     }
 }

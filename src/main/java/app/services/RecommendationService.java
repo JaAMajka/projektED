@@ -48,6 +48,7 @@ public class RecommendationService {
     public List<ResponseRecommendationDTO> getRecommendationsByUserId(Long userId) {
         userRepository.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
+
         return recommendationRepository.findAllByUserId(userId)
                 .stream()
                 .map(recommendationMapper::toDto)

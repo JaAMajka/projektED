@@ -3,6 +3,7 @@ package app.services;
 import app.Exceptions.EmailIsTaken;
 import app.Exceptions.PhoneNumberIsTaken;
 import app.Exceptions.UserNotFoundException;
+import app.Role;
 import app.dtos.creating.CreateUserDTO;
 import app.dtos.responding.ResponseUserDTO;
 import app.dtos.updating.UpdateUserDTO;
@@ -10,6 +11,7 @@ import app.mappers.UserMapper;
 import app.models.User;
 import app.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
 
     private User getUserById(Long id) {
@@ -42,6 +45,10 @@ public class UserService {
         if (userRepository.findUserByPhoneNumber(dto.phoneNumber()).isPresent()){
             throw new PhoneNumberIsTaken("User with this phone number already exists");
         }
+        user.setPasswordHash(passwordEncoder.encode(dto.password()));
+        user.setRole(Role.USER);
         return userRepository.save(user);
     }
+
+
 }

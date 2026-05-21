@@ -1,8 +1,10 @@
 package app.models;
 
+import app.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,6 +26,7 @@ public class User {
     private LocalDateTime createdAt;
     @OneToMany(mappedBy = "author")
     private List<Rate> rates;
+    private Enum<Role> role;
     @OneToMany(mappedBy = "user")
     private List<Recommendation> recommendations;
 }
