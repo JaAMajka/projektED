@@ -37,14 +37,14 @@ public class MenuItemController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseMenuItemDTO> updateMenuItemById(@Valid @PathVariable Long id, @PathVariable Long cafeId, @RequestBody UpdateMenuItemDTO dto) {
+    public ResponseEntity<ResponseMenuItemDTO> updateMenuItemById(@PathVariable Long id, @PathVariable Long cafeId, @Valid @RequestBody UpdateMenuItemDTO dto) {
         menuItemService.updateMenuItem(dto, cafeId, id);
         ResponseMenuItemDTO menuItemDto =  menuItemService.getMenuItemDtoById(cafeId, id);
         return new ResponseEntity<>(menuItemDto, HttpStatus.OK);
 
     }
     @PostMapping
-    public ResponseEntity<ResponseMenuItemDTO> createMenuItem(@Valid @PathVariable Long cafeId, @RequestBody CreateMenuItemDTO dto){
+    public ResponseEntity<ResponseMenuItemDTO> createMenuItem(@Valid @PathVariable Long cafeId, @Valid @RequestBody CreateMenuItemDTO dto){
         MenuItem menuItem = menuItemService.createMenuItem(dto);
         ResponseMenuItemDTO menuItemDto =  menuItemService.getMenuItemDtoById(cafeId, menuItem.getId());
         return new ResponseEntity<>(menuItemDto, HttpStatus.CREATED);

@@ -31,14 +31,14 @@ public class ScheduleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseScheduleDTO> updateScheduleById(@Valid @PathVariable Long id, @PathVariable Long cafeId, @RequestBody UpdateScheduleDTO dto) {
+    public ResponseEntity<ResponseScheduleDTO> updateScheduleById(@PathVariable Long id, @PathVariable Long cafeId, @Valid @RequestBody UpdateScheduleDTO dto) {
         scheduleService.updateSchedule(dto, id, cafeId);
         ResponseScheduleDTO scheduleDTO =  scheduleService.getScheduleDTOById(cafeId, id);
         return new ResponseEntity<>(scheduleDTO, HttpStatus.OK);
 
     }
     @PostMapping
-    public ResponseEntity<ResponseScheduleDTO> createSchedule(@Valid @PathVariable Long cafeId, @RequestBody CreateScheduleDTO dto){
+    public ResponseEntity<ResponseScheduleDTO> createSchedule(@PathVariable Long cafeId, @Valid @RequestBody CreateScheduleDTO dto){
         Schedule schedule = scheduleService.createSchedule(dto, cafeId);
         ResponseScheduleDTO scheduleDTO =  scheduleService.getScheduleDTOById(cafeId, schedule.getId());
         return new ResponseEntity<>(scheduleDTO, HttpStatus.CREATED);

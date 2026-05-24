@@ -34,7 +34,7 @@ public class AuthController {
         return new ResponseEntity<>("User with id " + user.getId() + " created successfully", HttpStatus.CREATED);
     }
     @PostMapping("/login")
-    public String login(@RequestBody @Valid LoginDTO dto) {
+    public String login(@Valid @RequestBody LoginDTO dto) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(dto.email(), dto.password())

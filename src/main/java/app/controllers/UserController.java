@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseUserDTO> updateUserById(@Valid @PathVariable Long id, @RequestBody UpdateUserDTO dto) {
+    public ResponseEntity<ResponseUserDTO> updateUserById(@PathVariable Long id, @Valid @RequestBody UpdateUserDTO dto) {
         MyUserDetails currentUser = (MyUserDetails) SecurityContextHolder
                 .getContext()
                 .getAuthentication()

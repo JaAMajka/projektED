@@ -32,7 +32,7 @@ public class CafeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseCafeDTO> updateCafeById(@Valid @PathVariable Long id, @RequestBody UpdateCafeDTO dto) {
+    public ResponseEntity<ResponseCafeDTO> updateCafeById(@PathVariable Long id, @Valid  @RequestBody UpdateCafeDTO dto) {
         cafeService.updateCafe(dto, id);
         return new ResponseEntity<>(cafeService.getCafeDtoById(id), HttpStatus.OK);
     }
