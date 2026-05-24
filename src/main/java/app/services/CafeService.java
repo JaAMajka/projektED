@@ -11,6 +11,8 @@ import app.repositories.CafeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CafeService {
@@ -39,6 +41,13 @@ public class CafeService {
         cafeMapper.updateCafeFromDto(dto, cafe);
         cafeRepository.save(cafe);
 
+    }
+    public List<ResponseCafeDTO> getAllCafeDtos(){
+        return cafeRepository
+                .findAll()
+                .stream()
+                .map(cafeMapper::toDto)
+                .toList();
     }
 
 
