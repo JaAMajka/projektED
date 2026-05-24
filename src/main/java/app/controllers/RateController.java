@@ -8,6 +8,7 @@ import app.dtos.updating.UpdateRateDTO;
 import app.models.Rate;
 import app.security.MyUserDetails;
 import app.services.RateService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,7 @@ public class RateController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseRateDTO> updateRateById(@PathVariable Long id, @PathVariable Long cafeId, @RequestBody UpdateRateDTO dto) {
+    public ResponseEntity<ResponseRateDTO> updateRateById(@Valid @PathVariable Long id, @PathVariable Long cafeId, @RequestBody UpdateRateDTO dto) {
         MyUserDetails currentUser = (MyUserDetails) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
@@ -61,7 +62,7 @@ public class RateController {
 
     }
     @PostMapping
-    public ResponseEntity<ResponseRateDTO> createRate(@PathVariable Long cafeId, @RequestBody CreateRateDTO dto){
+    public ResponseEntity<ResponseRateDTO> createRate(@Valid @PathVariable Long cafeId, @RequestBody CreateRateDTO dto){
         Rate rate = rateService.createRate(dto);
         ResponseRateDTO rateDTO =  rateService.getRateDtoById(cafeId, rate.getId());
         return new ResponseEntity<>(rateDTO, HttpStatus.CREATED);

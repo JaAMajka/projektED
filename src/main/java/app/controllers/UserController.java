@@ -8,6 +8,7 @@ import app.dtos.updating.UpdateUserDTO;
 import app.models.User;
 import app.security.MyUserDetails;
 import app.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseUserDTO> updateUserById(@PathVariable Long id, @RequestBody UpdateUserDTO dto) {
+    public ResponseEntity<ResponseUserDTO> updateUserById(@Valid @PathVariable Long id, @RequestBody UpdateUserDTO dto) {
         MyUserDetails currentUser = (MyUserDetails) SecurityContextHolder
                 .getContext()
                 .getAuthentication()

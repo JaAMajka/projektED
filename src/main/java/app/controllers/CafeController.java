@@ -5,6 +5,7 @@ import app.dtos.responding.ResponseCafeDTO;
 import app.dtos.updating.UpdateCafeDTO;
 import app.models.Cafe;
 import app.services.CafeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,12 +32,12 @@ public class CafeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseCafeDTO> updateCafeById(@PathVariable Long id, @RequestBody UpdateCafeDTO dto) {
+    public ResponseEntity<ResponseCafeDTO> updateCafeById(@Valid @PathVariable Long id, @RequestBody UpdateCafeDTO dto) {
         cafeService.updateCafe(dto, id);
         return new ResponseEntity<>(cafeService.getCafeDtoById(id), HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<ResponseCafeDTO> createCafe(@RequestBody CreateCafeDTO dto){
+    public ResponseEntity<ResponseCafeDTO> createCafe(@Valid @RequestBody CreateCafeDTO dto){
         Cafe cafe = cafeService.createCafe(dto);
         return new ResponseEntity<>(cafeService.getCafeDtoById(cafe.getId()), HttpStatus.CREATED);
 
