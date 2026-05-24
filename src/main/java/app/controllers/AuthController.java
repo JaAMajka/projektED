@@ -42,6 +42,7 @@ public class AuthController {
         return jwtService.generateToken(userDetails);
 
 
+
     }
 
 }

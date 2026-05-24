@@ -27,8 +27,10 @@ public class MenuItem {
     @ManyToOne
     @JoinColumn(name = "cafe_id")
     private Cafe cafe;
-    private Enum<BeverageType> type;
-    private Enum<AvailableSize> size;
+    @Enumerated(EnumType.STRING)
+    private BeverageType type;
+    @Enumerated(EnumType.STRING)
+    private AvailableSize size;
     private Boolean isAppendage;
     private Boolean isIced;
     private String capacity;

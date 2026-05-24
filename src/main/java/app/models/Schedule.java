@@ -17,7 +17,8 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Enum<Weekday> weekday;
+    @Enumerated(EnumType.STRING)
+    private Weekday weekday;
     private LocalTime openingHour;
     private LocalTime closingHour;
     @CreationTimestamp

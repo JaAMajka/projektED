@@ -1,5 +1,6 @@
 package app.security;
 
+import app.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +29,15 @@ public class SecurityConfig {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/cafes/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/cafes/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/cafes/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/cafes/**/schedules/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/cafes/**/schedules/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/cafes/**/schedules/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/cafes/**/menuItems/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/cafes/**/menuItems/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/cafes/**/menuItems/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(myUserDetailsService)

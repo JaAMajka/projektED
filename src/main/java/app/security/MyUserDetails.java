@@ -5,10 +5,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-public class MyUserDetails implements UserDetails {
+public class MyUserDetails implements UserDetails, Serializable {
     private final User user;
 
     public MyUserDetails(User user) {
@@ -24,6 +25,10 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getPassword() {
         return user.getPasswordHash();
+    }
+
+    public Long getId() {
+        return user.getId();
     }
 
     @Override
