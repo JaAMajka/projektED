@@ -3,7 +3,6 @@ import app.Exceptions.ActionNotAuthorizedException;
 import app.Role;
 import app.dtos.creating.CreateRateDTO;
 import app.dtos.responding.ResponseRateDTO;
-import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateRateDTO;
 import app.models.Rate;
 import app.security.MyUserDetails;
@@ -53,7 +52,7 @@ public class RateController {
 
 
 
-        if (!currentUser.getId().equals(id) && !currentUser.getAuthorities().contains(Role.ADMIN)) {
+        if (!currentUser.getId().equals(rateService.getRateDtoById(id, cafeId).authorId()) && !currentUser.getAuthorities().contains(Role.ADMIN)) {
             throw new ActionNotAuthorizedException("You are not authorized to delete this rate");
         }
         rateService.updateRate(dto, cafeId, id);
