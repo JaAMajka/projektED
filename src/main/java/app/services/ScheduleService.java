@@ -35,7 +35,7 @@ public class ScheduleService {
     private Schedule getScheduleById (Long id, Long cafeId) {
         Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found"));
         Schedule schedule =  scheduleRepository.findById(id).orElseThrow(() -> new ScheduleNotFoundException("Schedule not found"));
-        if (schedule.getCafe().equals(cafe)){
+        if (!schedule.getCafe().equals(cafe)){
             throw new ScheduleDoesNotBelongToCafe("This schedule does not belong to this cafe");
         }
         return schedule;
