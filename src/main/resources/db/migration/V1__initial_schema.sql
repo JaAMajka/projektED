@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 
 CREATE TABLE IF NOT EXISTS rates (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     cafe_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     beverage_score INTEGER,
@@ -69,10 +70,7 @@ CREATE TABLE IF NOT EXISTS rates (
     atmosphere_score INTEGER,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
 
-    PRIMARY KEY (
-        user_id,
-        cafe_id
-    ),
+    CONSTRAINT unique_user_cafe UNIQUE (user_id, cafe_id),
     CONSTRAINT fk_rates_user
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
 
