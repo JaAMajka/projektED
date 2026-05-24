@@ -3,7 +3,9 @@ package app.models;
 import app.AvailableSize;
 import app.BeverageType;
 import jakarta.persistence.*;
-import lombok.Data;
+
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,7 +13,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "menu_items")
 public class MenuItem {
