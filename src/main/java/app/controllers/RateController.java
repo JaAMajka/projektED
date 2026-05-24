@@ -36,7 +36,7 @@ public class RateController {
 
 
 
-        if (!currentUser.getId().equals(id) && !currentUser.getAuthorities().contains(Role.ADMIN)) {
+        if (!currentUser.getId().equals(rateService.getRateDtoById(id, cafeId).authorId()) && !currentUser.getAuthorities().contains(Role.ADMIN)) {
             throw new ActionNotAuthorizedException("You are not authorized to delete this rate");
         }
         rateService.deleteRateById(cafeId, id);
