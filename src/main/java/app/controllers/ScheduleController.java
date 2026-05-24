@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cafes/{cafeId}/schedules/")
+@RequestMapping("/cafes/{cafeId}/schedules")
 public class ScheduleController {
     private final ScheduleService scheduleService;
 

@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/cafes/{cafeId}/rates/")
+@RequestMapping("/cafes/{cafeId}/rates")
 public class RateController {
     private final RateService rateService;
 

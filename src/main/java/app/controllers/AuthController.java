@@ -6,6 +6,7 @@ import app.models.User;
 import app.security.JwtUtil;
 import app.security.MyUserDetails;
 import app.services.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
