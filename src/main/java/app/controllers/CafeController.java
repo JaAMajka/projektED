@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.dtos.creating.CreateCafeDTO;
+import app.dtos.filtering.FilterCafeDTO;
 import app.dtos.responding.ResponseCafeDTO;
 import app.dtos.updating.UpdateCafeDTO;
 import app.models.Cafe;
@@ -25,6 +26,11 @@ public class CafeController {
         return new ResponseEntity<>(cafeDTO, HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity<List<ResponseCafeDTO>> getCafesByCriteria(@ModelAttribute FilterCafeDTO criteria) {
+        List<ResponseCafeDTO> answer = cafeService.getCafeDtosByFilterCriteria(criteria);
+        return new ResponseEntity<>(answer, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCafeById(@PathVariable Long id) {
         cafeService.deleteCafeById(id);
