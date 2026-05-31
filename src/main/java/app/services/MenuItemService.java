@@ -11,6 +11,7 @@ import app.dtos.updating.UpdateMenuItemDTO;
 import app.mappers.MenuItemMapper;
 import app.models.Cafe;
 import app.models.MenuItem;
+import app.rabbit.CafeEventProducer;
 import app.repositories.CafeRepository;
 import app.repositories.MenuItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class MenuItemService {
     private final MenuItemRepository menuItemRepository;
     private final CafeRepository cafeRepository;
     private final MenuItemMapper menuItemMapper;
+    private final CafeEventProducer cafeEventProducer;
 
     public ResponseMenuItemDTO getMenuItemDtoById(Long cafeId, Long menuItemId) {
         getMenuItemById(cafeId, menuItemId);
@@ -52,7 +54,9 @@ public class MenuItemService {
         }
         Cafe cafe = cafeRepository.findById(dto.cafeId()).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
         menuItem.setCafe(cafe);
-        return menuItemRepository.save(menuItem);
+        MenuItem savedMenuItem = menuItemRepository.save(menuItem);
+        cafeEventProducer.sendMenuItemEvent(dto.cafeId());
+        return savedMenuItem;
     }
 
     public void updateMenuItem(UpdateMenuItemDTO dto, Long cafeId, Long menuItemId) {
@@ -61,6 +65,7 @@ public class MenuItemService {
         Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
         menuItem.setCafe(cafe);
         menuItemRepository.save(menuItem);
+        cafeEventProducer.sendMenuItemEvent(dto.cafeId());
     }
     public List<ResponseMenuItemDTO> getMenuItemDtosByCafeId(Long cafeId){
         cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found."));

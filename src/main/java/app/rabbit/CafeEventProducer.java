@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class CafeEventProducer {
     private final RabbitTemplate rabbitTemplate;
 
-    public void sendRateCreatedEvent(Long cafeId) {
+    public void sendRateEvent(Long cafeId) {
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.EXCHANGE,
                 RabbitMQConfig.RATE_QUEUE,
@@ -17,7 +17,7 @@ public class CafeEventProducer {
         );
     }
 
-    public void sendMenuItemChangedEvent(Long cafeId) {
+    public void sendMenuItemEvent(Long cafeId) {
         rabbitTemplate.convertAndSend(
                 RabbitMQConfig.EXCHANGE,
                 RabbitMQConfig.MENU_ITEM_QUEUE,

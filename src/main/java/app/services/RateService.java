@@ -4,10 +4,10 @@ import app.Exceptions.CafeNotFoundException;
 import app.Exceptions.RateNotFoundException;
 import app.dtos.creating.CreateRateDTO;
 import app.dtos.responding.ResponseRateDTO;
-import app.dtos.responding.ResponseScheduleDTO;
 import app.dtos.updating.UpdateRateDTO;
 import app.mappers.RateMapper;
 import app.models.Rate;
+import app.rabbit.CafeEventProducer;
 import app.repositories.CafeRepository;
 import app.repositories.RateRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +20,7 @@ public class RateService {
     private final RateRepository rateRepository;
     private final RateMapper rateMapper;
     private final CafeRepository cafeRepository;
+    private final CafeEventProducer cafeEventProducer;
 
 
     public ResponseRateDTO getRateDtoById(Long id, Long cafeId) {
@@ -27,7 +28,9 @@ public class RateService {
     }
     public Rate createRate(CreateRateDTO dto) {
         Rate rate = rateMapper.toEntity(dto);
-        return rateRepository.save(rate);
+        Rate savedRate =  rateRepository.save(rate);
+        cafeEventProducer.sendRateEvent(dto.cafeId());
+        return savedRate;
     }
     private Rate getRateById(Long id, Long cafeId) {
         cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found"));
@@ -48,6 +51,7 @@ public class RateService {
         Rate rate = getRateById(rateId, cafeId);
         rateMapper.updateRateFromDto(dto, rate);
         rateRepository.save(rate);
+        cafeEventProducer.sendMenuItemEvent(cafeId);
     }
     public List<ResponseRateDTO> getRatesByCafeId(Long cafeId){
         cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found."));
