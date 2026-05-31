@@ -48,7 +48,7 @@ public class CafeController {
         return new ResponseEntity<>(cafeService.getCafeDtoById(cafe.getId()), HttpStatus.CREATED);
 
     }
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<ResponseCafeDTO>> getAllCafes() {
         return new ResponseEntity<>(cafeService.getAllCafeDtos(), HttpStatus.OK);
     }
