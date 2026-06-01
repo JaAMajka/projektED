@@ -1,0 +1,851 @@
+cafeName,beverageScore,serviceScore,atmosphereScore
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,2,3,3
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,1,4,4
+KAFFE BAGERI Stockholm,2,5,4
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,3,4,4
+KAFFE BAGERI Stockholm,5,4,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,4,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,3,5,4
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+KAFFE BAGERI Stockholm,5,5,5
+CYTAT Café,3,3,4
+CYTAT Café,5,5,5
+CYTAT Café,null,4,5
+CYTAT Café,5,4,5
+CYTAT Café,5,5,5
+CYTAT Café,5,5,5
+CYTAT Café,3,1,2
+CYTAT Café,null,null,5
+CYTAT Café,5,5,5
+CYTAT Café,5,4,4
+CYTAT Café,5,5,5
+CYTAT Café,5,5,5
+CYTAT Café,5,5,5
+CYTAT Café,4,4,5
+CYTAT Café,null,1,null
+CYTAT Café,5,5,5
+CYTAT Café,5,5,5
+CYTAT Café,5,4,5
+CYTAT Café,5,5,5
+CYTAT Café,5,5,5
+CYTAT Café,4,5,5
+CYTAT Café,5,5,5
+CYTAT Café,5,4,5
+CYTAT Café,1,3,3
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,4,5,5
+Blumen Café,1,1,1
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,4,5
+Blumen Café,5,4,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,4,5,4
+Blumen Café,4,5,5
+Blumen Café,5,5,5
+Blumen Café,4,4,5
+Blumen Café,5,5,5
+Blumen Café,5,5,5
+Blumen Café,5,5,4
+Mleczarnia,5,4,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,3,3,4
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,4,3,5
+Mleczarnia,5,4,5
+Mleczarnia,null,5,5
+Mleczarnia,4,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,4,4,5
+Mleczarnia,null,5,5
+Mleczarnia,2,4,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,5,5,5
+Mleczarnia,1,1,1
+Mleczarnia,5,5,5
+Mleczarnia,4,3,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,3,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,4,5,4
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,4,3
+COFFEE GARDEN,null,1,4
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,4,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,1,3,2
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,4,4,5
+COFFEE GARDEN,5,5,4
+COFFEE GARDEN,5,5,5
+COFFEE GARDEN,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,null,4,4
+FINCA COFFEE,5,5,4
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,4,4
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,4,3,2
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,5,5
+FINCA COFFEE,5,4,4
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,4,5,5
+Cafe Kładka,5,4,5
+Cafe Kładka,5,5,5
+Cafe Kładka,4,4,4
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Cafe Kładka,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,4,5,4
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,1,1,1
+Urban Coffee,5,5,4
+Urban Coffee,1,1,1
+Urban Coffee,4,3,3
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,4
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,4
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,4
+Carmel Atelier,4,4,4
+Carmel Atelier,5,5,5
+Carmel Atelier,5,4,3
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,4
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,2,3,1
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+Carmel Atelier,2,5,1
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,3
+Carmel Atelier,5,5,5
+Carmel Atelier,5,5,5
+KawaLerka,4,4,4
+KawaLerka,null,5,null
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,2,5,3
+KawaLerka,5,5,5
+KawaLerka,2,4,4
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,4,5,4
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,4
+KawaLerka,null,5,2
+KawaLerka,5,5,5
+KawaLerka,5,4,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,5,null,null
+KawaLerka,5,5,5
+KawaLerka,5,5,5
+KawaLerka,1,1,5
+KawaLerka,5,5,5
+Les Couleurs Cafe,4,5,5
+Les Couleurs Cafe,5,5,2
+Les Couleurs Cafe,4,4,4
+Les Couleurs Cafe,5,1,5
+Les Couleurs Cafe,4,4,5
+Les Couleurs Cafe,4,4,4
+Les Couleurs Cafe,null,3,1
+Les Couleurs Cafe,3,5,5
+Les Couleurs Cafe,null,1,null
+Les Couleurs Cafe,null,5,null
+Les Couleurs Cafe,null,5,5
+Les Couleurs Cafe,1,5,5
+Les Couleurs Cafe,4,4,4
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,null,5,5
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,4,4,4
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,5,5,4
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,3,5,5
+Les Couleurs Cafe,5,5,3
+Les Couleurs Cafe,5,5,5
+Les Couleurs Cafe,4,4,5
+Urban Coffee,5,5,5
+Urban Coffee,4,5,5
+Urban Coffee,5,5,5
+Urban Coffee,3,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,4,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,4,4
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,4,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,5,4,5
+Urban Coffee,4,4,4
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Urban Coffee,3,3,3
+Urban Coffee,5,5,5
+Urban Coffee,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,3,5,5
+Mech Café,5,5,5
+Mech Café,5,5,4
+Mech Café,3,1,1
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,4,5,5
+Mech Café,4,4,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,3,4,4
+Mech Café,5,5,5
+Mech Café,2,4,4
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,4
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,5,5
+Mech Café,5,3,4
+Mech Café,5,5,5
+Mech Café,5,3,5
+Ambalaż - kawiarnia z widokiem,4,5,5
+Ambalaż - kawiarnia z widokiem,5,4,4
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,3,1,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,4,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,4,2,3
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,4,1,4
+Ambalaż - kawiarnia z widokiem,5,5,5
+Ambalaż - kawiarnia z widokiem,5,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,5,4,5
+Cawa,4,4,4
+Cawa,5,5,5
+Cawa,3,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,4,5,4
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,3,4,4
+Cawa,5,5,5
+Cawa,5,5,5
+Cawa,4,4,4
+Cawa,4,3,5
+Cawa,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,4,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,3,1,1
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,4
+EMIGRANT Specialty Coffee – Kalwaryjska,3,4,4
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,1,1,3
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,3,2,3
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,1,3,3
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,5,5,5
+EMIGRANT Specialty Coffee – Kalwaryjska,4,4,5
+La Baguette,5,5,5
+La Baguette,3,4,5
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,3,4,4
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,4,4,4
+La Baguette,4,5,5
+La Baguette,3,5,5
+La Baguette,5,5,5
+La Baguette,4,5,4
+La Baguette,4,4,4
+La Baguette,4,4,5
+La Baguette,3,2,1
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,3,5,5
+La Baguette,2,3,4
+La Baguette,4,5,5
+La Baguette,4,5,5
+La Baguette,4,5,5
+La Baguette,3,5,5
+La Baguette,1,1,1
+La Baguette,2,5,5
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,5,5,5
+La Baguette,4,4,4
+La Baguette,4,5,5
+Coffeece,5,5,5
+Coffeece,4,5,5
+Coffeece,5,5,5
+Coffeece,5,5,4
+Coffeece,5,5,5
+Coffeece,1,1,1
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,4,4
+Coffeece,4,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,2,3,3
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Coffeece,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,4,5,4
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,4,4,4
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,1,5,5
+Aftertaste Coffee & Wine,5,5,5
+Aftertaste Coffee & Wine,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,3,4,1
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,2,1,1
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,3,1,1
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,3,1,1
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,2,2,1
+iOVE Cocktail I Coffee I Music I Fashion I Breakfast,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,1,5,4
+Rozkwit cafe,2,4,4
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,1,4,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,1,3,4
+Rozkwit cafe,5,5,5
+Rozkwit cafe,5,5,5
+Rozkwit cafe,2,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,2,5,4
+Bonbon Boutique,4,1,2
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,4,5,3
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,1,4,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,1,1,1
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,4,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,3,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,5,5
+Bonbon Boutique,5,4,4
+Bonbon Boutique,4,2,3
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,4,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,1,1,3
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,3,3,4
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,3,4,4
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,4,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,3,4,4
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,2,2,2
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Søtt Cafe & Bakery • Specialty Coffee • Breakfasts,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,1,3,3
+Fable Cafe,1,1,1
+Fable Cafe,5,5,5
+Fable Cafe,5,5,4
+Fable Cafe,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,3,3,3
+Fable Cafe,5,4,4
+Fable Cafe,2,4,5
+Fable Cafe,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,5,5,5
+Fable Cafe,3,5,5
+Fable Cafe,5,4,4
+Fable Cafe,5,3,5
+Fable Cafe,1,1,4
+Fable Cafe,5,5,4
+Fable Cafe,5,5,5
+Efemeria. Kraina Czarów,5,5,5
+Efemeria. Kraina Czarów,5,5,5
+Efemeria. Kraina Czarów,5,5,5
+Efemeria. Kraina Czarów,4,3,4
+Efemeria. Kraina Czarów,4,3,4
+Efemeria. Kraina Czarów,5,5,4
+Efemeria. Kraina Czarów,5,5,5
+Efemeria. Kraina Czarów,5,5,5
+Efemeria. Kraina Czarów,4,5,5
+Efemeria. Kraina Czarów,4,4,5
+Efemeria. Kraina Czarów,3,4,5
+Butter Café,5,5,4
+Butter Café,5,5,4
+Butter Café,5,5,4
+Butter Café,5,5,5
+Butter Café,5,5,5
+Butter Café,5,5,3
+Butter Café,5,5,5
+Butter Café,5,5,5
+Butter Café,5,5,3
+Butter Café,5,5,5
+Butter Café,5,5,5
+Butter Café,2,3,2
+Butter Café,5,3,4
+Butter Café,5,5,5
+Butter Café,5,5,5
+Butter Café,4,1,2
+Butter Café,5,4,5
+Butter Café,5,5,5
+Butter Café,4,3,3
+Butter Café,5,5,5
+Butter Café,5,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,4,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,2,3,5
+Żarówka Cafe,5,4,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,4,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,4,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,2,3
+Żarówka Cafe,5,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,4,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,3,5,5
+Żarówka Cafe,5,5,5
+Żarówka Cafe,3,3,4
+Cakester Cafe,5,5,5
+Cakester Cafe,3,3,3
+Cakester Cafe,5,5,5
+Cakester Cafe,5,5,4
+Cakester Cafe,5,3,3
+Cakester Cafe,5,5,5
+Cakester Cafe,5,5,5
+Cakester Cafe,3,1,1
+Cakester Cafe,5,5,3
+Cakester Cafe,5,5,5
+Cakester Cafe,3,4,3
+Cakester Cafe,4,5,5
+Cakester Cafe,4,4,4
+Cakester Cafe,5,5,4
+Cakester Cafe,5,5,5
+Cakester Cafe,5,5,5
+Cakester Cafe,5,5,5
+Cakester Cafe,5,4,5
+Cakester Cafe,5,5,3
+Cakester Cafe,5,5,5
+Cakester Cafe,5,5,5
+Katane,2,3,4
+Katane,5,5,5
+Katane,5,5,4
+Katane,5,5,5
+Katane,5,5,5
+Katane,5,5,5
+Katane,1,1,1
+Katane,4,5,5
+Katane,4,5,5
+Katane,5,5,4
+Katane,5,5,5
+Katane,1,3,3
+Katane,5,5,5
+Katane,5,3,4
+Katane,5,5,5
+Katane,2,2,2
+Katane,2,1,1
+Katane,5,5,5
+Katane,2,1,2
+Katane,5,5,5
+Katane,5,5,5
+Dziórawy Kocioł,4,5,5
+Dziórawy Kocioł,4,5,5
+Dziórawy Kocioł,5,5,4
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,3,3,4
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,4,4,5
+Dziórawy Kocioł,3,5,5
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,4,5,5
+Dziórawy Kocioł,5,5,4
+Dziórawy Kocioł,4,3,4
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,4,4,4
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,5,4,5
+Dziórawy Kocioł,5,5,5
+Dziórawy Kocioł,1,1,1
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,5,4
+Nowa Prowincja,5,4,3
+Nowa Prowincja,5,2,2
+Nowa Prowincja,5,5,5
+Nowa Prowincja,4,4,5
+Nowa Prowincja,4,2,4
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,4,3
+Nowa Prowincja,5,5,4
+Nowa Prowincja,5,3,5
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,5,5
+Nowa Prowincja,4,4,4
+Nowa Prowincja,5,5,5
+Nowa Prowincja,3,3,4
+Nowa Prowincja,5,5,5
+Nowa Prowincja,5,3,3
+Nowa Prowincja,5,5,5
+Charlotte,2,1,2
+Charlotte,5,5,5
+Charlotte,5,2,3
+Charlotte,5,5,5
+Charlotte,1,1,1
+Charlotte,3,5,4
+Charlotte,5,5,5
+Charlotte,4,5,5
+Charlotte,2,1,1
+Charlotte,4,5,5
+Charlotte,5,5,5
+Charlotte,5,5,5
+Charlotte,5,5,5
+Charlotte,5,5,5
+Charlotte,3,4,4
+Charlotte,5,5,5
+Charlotte,5,5,5
+Charlotte,5,5,5
+Charlotte,4,2,2
+Charlotte,5,5,5
+Charlotte,3,1,4
+B.O.H.O Coffee&Bar,3,1,2
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,4,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,1,4,3
+B.O.H.O Coffee&Bar,2,3,3
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,4,1,1
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,2,1
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,3,4,1
+B.O.H.O Coffee&Bar,5,5,5
+B.O.H.O Coffee&Bar,5,5,5
+De revolutionibus ideæ,1,4,1
+De revolutionibus ideæ,5,5,4
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,3
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,3,2,3
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,4
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,4
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,4,4,3
+De revolutionibus ideæ,1,1,1
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,5,5,5
+De revolutionibus ideæ,4,4,3
