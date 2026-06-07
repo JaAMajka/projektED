@@ -3,6 +3,7 @@ package app.services;
 import app.BeverageType;
 import app.models.CafeReadModel;
 import app.projections.AvgPriceProjection;
+import app.projections.AvgRateProjection;
 import app.repositories.CafeReadModelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class CafeReadModelService {
     private final CafeReadModelRepository cafeReadModelRepository;
 
-    public void recalculateAverages(Long cafeId, List<AvgPriceProjection> averages){
+    public void recalculatePriceAverages(Long cafeId, List<AvgPriceProjection> averages){
         CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
         Map<BeverageType, BigDecimal> avgPrices = averages.stream()
                 .collect(Collectors.toMap(
@@ -31,6 +32,14 @@ public class CafeReadModelService {
         cafeReadModel.setAvgLeafTeaPrice(avgPrices.getOrDefault(BeverageType.LEAF_TEA, null));
         cafeReadModel.setAvgWhiteCoffeePrice(avgPrices.getOrDefault(BeverageType.COFFEE_DRINKS, null));
         cafeReadModel.setAvgOtherPrice(avgPrices.getOrDefault(BeverageType.OTHER, null));
+        cafeReadModelRepository.save(cafeReadModel);
+    }
+
+    public void recalculateRateAverages(Long cafeId, AvgRateProjection averages){
+        CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
+        cafeReadModel.setAvgAtmosphereScore(averages.getAvgAtmosphereScore());
+        cafeReadModel.setAvgBeverageScore(averages.getAvgBeverageScore());
+        cafeReadModel.setAvgServiceScore(averages.getAvgServiceScore());
         cafeReadModelRepository.save(cafeReadModel);
     }
 
