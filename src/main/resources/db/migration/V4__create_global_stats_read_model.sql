@@ -7,6 +7,5 @@ CREATE TABLE global_stats (
     avg_price_fruity_drink NUMERIC(10, 2),
     avg_price_leaf_tea NUMERIC(10, 2),
     avg_price_other NUMERIC(10, 2),
-    avg_price_overall NUMERIC(10,2)
     updated_at TIMESTAMP
 );

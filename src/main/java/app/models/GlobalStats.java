@@ -16,14 +16,13 @@ public class GlobalStats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(EnumType.STRING)
-    @Column(unique = true, nullable = false)
-    private BeverageType beverageType;
-    private BigDecimal avgPrice;
-    private BigDecimal avgBeverageScore;
-    private BigDecimal avgServiceScore;
-    private BigDecimal avgAtmosphereScore;
-
+    private BigDecimal avgPricePureCoffee;
+    private BigDecimal avgPriceCoffeeDrinks;
+    private BigDecimal avgPriceMatcha;
+    private BigDecimal avgPriceBaggedTea;
+    private BigDecimal avgPriceFruityDrink;
+    private BigDecimal avgPriceLeafTea;
+    private BigDecimal avgPriceOther;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
