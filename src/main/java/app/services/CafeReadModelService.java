@@ -43,4 +43,13 @@ public class CafeReadModelService {
         cafeReadModelRepository.save(cafeReadModel);
     }
 
+    public void updateHasIcedPropertyIfIcedItemAdded(Long cafeId, Boolean hasIcedItems){
+        CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
+        if(hasIcedItems){
+            cafeReadModel.setHasIcedItems(Boolean.TRUE);
+        }
+
+        cafeReadModelRepository.save(cafeReadModel);
+    }
+
 }
