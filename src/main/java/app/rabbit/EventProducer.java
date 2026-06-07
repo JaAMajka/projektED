@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CafeEventProducer {
+public class EventProducer {
     private final RabbitTemplate rabbitTemplate;
 
     public void sendRateEvent(Long cafeId) {

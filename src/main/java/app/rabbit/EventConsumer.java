@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class CafeEventConsumer {
+public class EventConsumer {
     private final MenuItemRepository menuItemRepository;
     private final RateRepository rateRepository;
     private final CafeReadModelService cafeReadModelService;
