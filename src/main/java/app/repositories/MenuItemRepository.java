@@ -3,9 +3,9 @@ package app.repositories;
 
 import app.models.Cafe;
 import app.models.MenuItem;
-import app.models.Schedule;
-
+import app.projections.AvgPriceProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 import java.util.List;
@@ -15,4 +15,6 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 
     Optional<MenuItem> findByCafeAndName(Cafe cafe, String name);
     List<MenuItem> findAllByCafeId(Long cafeId);
+    @Query("SELECT AVG(m.price), m.type FROM MenuItem m WHERE m.cafe.id = :cafeId GROUP BY m.type")
+    List<AvgPriceProjection> findAvgPricePerType(Long cafeId);
 }
