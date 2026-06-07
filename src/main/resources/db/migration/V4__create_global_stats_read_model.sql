@@ -1,9 +1,12 @@
 CREATE TABLE global_stats (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    beverage_type VARCHAR NOT NULL UNIQUE,
-    avg_price NUMERIC(10, 2),
-    avg_beverage_score NUMERIC(10, 2),
-    avg_service_score NUMERIC(10, 2),
-    avg_atmosphere_score NUMERIC(10, 2),
+    avg_price_pure_coffee NUMERIC(10, 2),
+    avg_price_coffee_drinks NUMERIC(10, 2),
+    avg_price_matcha NUMERIC(10, 2),
+    avg_price_bagged_tea NUMERIC(10, 2),
+    avg_price_fruity_drink NUMERIC(10, 2),
+    avg_price_leaf_tea NUMERIC(10, 2),
+    avg_price_other NUMERIC(10, 2),
+    avg_price_overall NUMERIC(10,2)
     updated_at TIMESTAMP
 );
