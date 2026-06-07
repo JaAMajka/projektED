@@ -19,5 +19,7 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
     List<AvgPriceProjection> findAvgPricePerType(Long cafeId);
     @Query("SELECT EXISTS( SELECT 1 FROM MenuItem m WHERE m.isIced = true AND m.isAppendage = false AND m.cafe.id = :cafeId)")
     Boolean checkIfCafeHasIcedItems(Long cafeId);
+    @Query("SELECT AVG(m.price), m.type FROM MenuItem m WHERE m.isAppendage = false GROUP BY m.type")
+    List<AvgPriceProjection> findAvgPricePerTypeGlobal();
 
 }
