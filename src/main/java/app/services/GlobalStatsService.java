@@ -17,7 +17,10 @@ public class GlobalStatsService {
     private final GlobalStatsRepository globalStatsRepository;
 
     public void updatePriceAverages(List<AvgPriceProjection> avgPricePerTypeGlobal){
-        GlobalStats globalStats = globalStatsRepository.findAll().getFirst();
+        GlobalStats globalStats = globalStatsRepository.findAll()
+                .stream()
+                .findFirst()
+                .orElse(new GlobalStats());
         Map<BeverageType, BigDecimal> pricesMap = avgPricePerTypeGlobal.stream()
                         .collect(Collectors.toMap(
                                 AvgPriceProjection::getType,
