@@ -45,6 +45,8 @@ public class RecommendationService {
     private static final int K = 4;
     private static final int MAX_ITERATIONS = 20;
 
+    private record CafeScores(double beverage, double service, double atmosphere) {}
+
     public ResponseRecommendationDTO getRecommendationDtoById(Long id, Long userId) {
         return recommendationMapper.toDto(getRecommendationById(id, userId));
     }
@@ -89,7 +91,6 @@ public class RecommendationService {
      * Główna metoda generująca rekomendacje dla użytkownika na podstawie klasteryzacji K-Means
      */
     public List<Cafe> getRecommendationsForUser(Long userId, int limit) {
-        log.info("Fetching recommendations for user: {}", userId);
         List<Rate> allRates = rateRepository.findAll();
         List<Cafe> allCafes = cafeRepository.findAll();
         
@@ -97,33 +98,34 @@ public class RecommendationService {
             return Collections.emptyList();
         }
 
-        // 1. Budowanie macierzy profilu użytkowników: Map<UserId, Map<CafeId, Double>>
-        // Przekształcamy 3 sub-oceny w jedną ogólną średnią ocenę kawiarni
-        Map<Long, Map<Long, Double>> userItemMatrix = new HashMap<>();
+        // 1. Budowanie macierzy trójwymiarowej: Map<UserId, Map<CafeId, CafeScores>>
+        Map<Long, Map<Long, CafeScores>> userItemMatrix = new HashMap<>();
         for (Rate rate : allRates) {
             if (rate.getAuthor() == null || rate.getCafe() == null) continue;
             
             long uId = rate.getAuthor().getId();
             long cId = rate.getCafe().getId();
             
-            // Średnia z trzech składowych
-            double avgScore = (rate.getBeverageScore() + rate.getServiceScore() + rate.getAtmosphereScore()) / 3.0;
+            CafeScores scores = new CafeScores(
+                rate.getBeverageScore() != null ? rate.getBeverageScore() : 3.0,
+                rate.getServiceScore() != null ? rate.getServiceScore() : 3.0,
+                rate.getAtmosphereScore() != null ? rate.getAtmosphereScore() : 3.0
+            );
             
             userItemMatrix.putIfAbsent(uId, new HashMap<>());
-            userItemMatrix.get(uId).put(cId, avgScore);
+            userItemMatrix.get(uId).put(cId, scores);
         }
 
-        // Jeśli nasz użytkownik nie ocenił jeszcze niczego, nie wiemy do którego klastra go przypisać.
-        // Zwracamy ogólnie najwyżej oceniane kawiarnie w mieście (fallback).
+        // Fallback: jeśli użytkownik nie ocenił jeszcze niczego, zwracamy najpopularniejsze kawiarnie
         if (!userItemMatrix.containsKey(userId)) {
             return getPopularCafesFallback(allCafes, allRates, limit);
         }
 
-        // 2. Wykonanie algorytmu K-Means na profilach użytkowników
+        // 2. Uruchomienie wielowymiarowego algorytmu K-Means
         List<Long> userIds = new ArrayList<>(userItemMatrix.keySet());
-        Map<Integer, List<Long>> clusters = runKMeans(userIds, userItemMatrix, allCafes);
+        Map<Integer, List<Long>> clusters = runMultiDimensionalKMeans(userIds, userItemMatrix, allCafes);
 
-        // 3. Znalezienie klastra, do którego należy docelowy użytkownik
+        // 3. Identyfikacja klastra docelowego użytkownika
         int targetClusterId = -1;
         for (Map.Entry<Integer, List<Long>> entry : clusters.entrySet()) {
             if (entry.getValue().contains(userId)) {
@@ -136,39 +138,42 @@ public class RecommendationService {
             return getPopularCafesFallback(allCafes, allRates, limit);
         }
 
-        // 4. Agregacja ocen kawiarni wewnątrz wybranego klastra
-        List<Long> membersOfCluster = clusters.get(targetClusterId);
-        Map<Long, List<Double>> cafeScoresInCluster = new HashMap<>();
+        // 4. Agregacja i sumowanie składowych ocen wewnątrz wybranego klastra
+        List<Long> clusterMembers = clusters.get(targetClusterId);
+        Map<Long, List<Double>> cafeAccumulatedScores = new HashMap<>();
 
-        for (Long memberId : membersOfCluster) {
-            Map<Long, Double> memberRates = userItemMatrix.get(memberId);
-            for (Map.Entry<Long, Double> rateEntry : memberRates.entrySet()) {
+        for (Long memberId : clusterMembers) {
+            Map<Long, CafeScores> memberRates = userItemMatrix.get(memberId);
+            for (Map.Entry<Long, CafeScores> rateEntry : memberRates.entrySet()) {
                 long cafeId = rateEntry.getKey();
-                double score = rateEntry.getValue();
+                CafeScores cs = rateEntry.getValue();
                 
-                cafeScoresInCluster.putIfAbsent(cafeId, new ArrayList<>());
-                cafeScoresInCluster.get(cafeId).add(score);
+                // Sumujemy wektory (łączna wartość atrakcyjności kawiarni dla tego klastra)
+                double totalScoreValue = cs.beverage() + cs.service() + cs.atmosphere();
+                
+                cafeAccumulatedScores.putIfAbsent(cafeId, new ArrayList<>());
+                cafeAccumulatedScores.get(cafeId).add(totalScoreValue);
             }
         }
 
-        // 5. Obliczanie średniej dla każdej kawiarni w klastrze i sortowanie od najwyższej
-        Map<Long, Double> cafeAverageScores = new HashMap<>();
-        for (Map.Entry<Long, List<Double>> entry : cafeScoresInCluster.entrySet()) {
+        // 5. Wyliczanie średniej atrakcyjności obiektów w klastrze
+        Map<Long, Double> cafeFinalRank = new HashMap<>();
+        for (Map.Entry<Long, List<Double>> entry : cafeAccumulatedScores.entrySet()) {
             double avg = entry.getValue().stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-            cafeAverageScores.put(entry.getKey(), avg);
+            cafeFinalRank.put(entry.getKey(), avg);
         }
 
-        // Pobieramy ID kawiarni już ocenionych przez naszego użytkownika (nie chcemy polecać tego, co już zna)
+        // Odfiltrowujemy kawiarnie, które nasz użytkownik już sam ocenił
         Set<Long> alreadyRatedByTargetUser = userItemMatrix.get(userId).keySet();
 
-        List<Long> recommendedCafeIds = cafeAverageScores.entrySet().stream()
-                .filter(entry -> !alreadyRatedByTargetUser.contains(entry.getKey())) // odrzucamy znane kawiarnie
+        List<Long> recommendedCafeIds = cafeFinalRank.entrySet().stream()
+                .filter(entry -> !alreadyRatedByTargetUser.contains(entry.getKey()))
                 .sorted((e1, e2) -> Double.compare(e2.getValue(), e1.getValue())) // sortowanie malejąco
                 .limit(limit)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        // Mapujemy identyfikatory z powrotem na pełne obiekty encji Cafe
+        // Mapowanie identyfikatorów na pełne encje Cafe z zachowaniem kolejności rankingu
         return allCafes.stream()
                 .filter(cafe -> recommendedCafeIds.contains(cafe.getId()))
                 .sorted(Comparator.comparingInt(c -> recommendedCafeIds.indexOf(c.getId())))
@@ -176,13 +181,17 @@ public class RecommendationService {
     }
 
     /**
-     * Implementacja rdzenia algorytmu K-Means
+     * Trójwymiarowy rdzeń algorytmu K-Means
      */
-    private Map<Integer, List<Long>> runKMeans(List<Long> userIds, Map<Long, Map<Long, Double>> matrix, List<Cafe> allCafes) {
-        // Inicjalizacja centroidów (losowe profile bazowe dla K klastrów)
-        Map<Integer, Map<Long, Double>> centroids = new HashMap<>();
-        Random random = new Random(42); // Seed dla powtarzalności wyników
+    private Map<Integer, List<Long>> runMultiDimensionalKMeans(
+            List<Long> userIds, 
+            Map<Long, Map<Long, CafeScores>> matrix, 
+            List<Cafe> allCafes) {
+            
+        Map<Integer, Map<Long, CafeScores>> centroids = new HashMap<>();
+        Random random = new Random(42); // Stały seed dla stabilności wyników
 
+        // Inicjalizacja losowych centroidów z istniejących profili użytkowników
         for (int i = 0; i < K; i++) {
             long randomUserId = userIds.get(random.nextInt(userIds.size()));
             centroids.put(i, new HashMap<>(matrix.get(randomUserId)));
@@ -190,18 +199,17 @@ public class RecommendationService {
 
         Map<Integer, List<Long>> clusters = new HashMap<>();
 
-        // Pętla optymalizacyjna klastrów
         for (int iter = 0; iter < MAX_ITERATIONS; iter++) {
             clusters.clear();
             for (int i = 0; i < K; i++) clusters.put(i, new ArrayList<>());
 
-            // Przypisywanie użytkowników do najbliższego centroidu
+            // Krok przypisania: obliczanie wielowymiarowej odległości euklidesowej
             for (Long uId : userIds) {
                 int bestCluster = 0;
                 double minDistance = Double.MAX_VALUE;
 
                 for (int i = 0; i < K; i++) {
-                    double dist = calculateEuclideanDistance(matrix.get(uId), centroids.get(i), allCafes);
+                    double dist = calculateEuclideanDistance3D(matrix.get(uId), centroids.get(i), allCafes);
                     if (dist < minDistance) {
                         minDistance = dist;
                         bestCluster = i;
@@ -210,24 +218,27 @@ public class RecommendationService {
                 clusters.get(bestCluster).add(uId);
             }
 
-            // Aktualizacja pozycji centroidów (liczenie średniej pozycji członków klastra)
+            // Krok aktualizacji: wyliczanie nowego środka ciężkości osobno dla każdej osi (3D)
             for (int i = 0; i < K; i++) {
-                List<Long> clusterMembers = clusters.get(i);
-                if (clusterMembers.isEmpty()) continue;
+                List<Long> members = clusters.get(i);
+                if (members.isEmpty()) continue;
 
-                Map<Long, Double> newCentroid = new HashMap<>();
+                Map<Long, CafeScores> newCentroid = new HashMap<>();
                 for (Cafe cafe : allCafes) {
-                    double sum = 0;
+                    double bSum = 0, sSum = 0, aSum = 0;
                     int count = 0;
-                    for (Long memberId : clusterMembers) {
-                        Double score = matrix.get(memberId).get(cafe.getId());
-                        if (score != null) {
-                            sum += score;
+                    
+                    for (Long memberId : members) {
+                        CafeScores scores = matrix.get(memberId).get(cafe.getId());
+                        if (scores != null) {
+                            bSum += scores.beverage();
+                            sSum += scores.service();
+                            aSum += scores.atmosphere();
                             count++;
                         }
                     }
                     if (count > 0) {
-                        newCentroid.put(cafe.getId(), sum / count);
+                        newCentroid.put(cafe.getId(), new CafeScores(bSum / count, sSum / count, aSum / count));
                     }
                 }
                 centroids.put(i, newCentroid);
@@ -237,28 +248,34 @@ public class RecommendationService {
     }
 
     /**
-     * Obliczanie odległości euklidesowej między profilami ocen dwóch użytkowników
+     * Matematyczne obliczanie odległości euklidesowej w przestrzeni trójwymiarowej dla wszystkich obiektów
      */
-    private double calculateEuclideanDistance(Map<Long, Double> userRates, Map<Long, Double> centroidRates, List<Cafe> allCafes) {
+    private double calculateEuclideanDistance3D(Map<Long, CafeScores> userRates, Map<Long, CafeScores> centroidRates, List<Cafe> allCafes) {
         double sum = 0;
         for (Cafe cafe : allCafes) {
-            // Jeśli użytkownik lub centroid nie ocenili danej kawiarni, przyjmujemy neutralną wartość środkową (3.0)
-            double uScore = userRates.getOrDefault(cafe.getId(), 3.0);
-            double cScore = centroidRates.getOrDefault(cafe.getId(), 3.0);
-            sum += Math.pow(uScore - cScore, 2);
+            // Dla kawiarni nieocenionych przez danego użytkownika przyjmujemy bezpieczny punkt środkowy (3.0)
+            CafeScores u = userRates.getOrDefault(cafe.getId(), new CafeScores(3.0, 3.0, 3.0));
+            CafeScores c = centroidRates.getOrDefault(cafe.getId(), new CafeScores(3.0, 3.0, 3.0));
+            
+            // Suma kwadratów różnic dla trzech niezależnych osi (napoje, obsługa, klimat)
+            sum += Math.pow(u.beverage() - c.beverage(), 2);
+            sum += Math.pow(u.service() - c.service(), 2);
+            sum += Math.pow(u.atmosphere() - c.atmosphere(), 2);
         }
         return Math.sqrt(sum);
     }
 
     /**
-     * Fallback: zwraca globalnie najwyżej oceniane kawiarnie
+     * Globalny fallback oparty na sumarycznej średniej z trzech składowych ocen
      */
     private List<Cafe> getPopularCafesFallback(List<Cafe> cafes, List<Rate> rates, int limit) {
         Map<Long, List<Double>> globalScores = new HashMap<>();
         for (Rate rate : rates) {
             if (rate.getCafe() == null) continue;
             long cId = rate.getCafe().getId();
-            double avg = (rate.getBeverageScore() + rate.getServiceScore() + rate.getAtmosphereScore()) / 3.0;
+            double avg = ((rate.getBeverageScore() != null ? rate.getBeverageScore() : 3) + 
+                          (rate.getServiceScore() != null ? rate.getServiceScore() : 3) + 
+                          (rate.getAtmosphereScore() != null ? rate.getAtmosphereScore() : 3)) / 3.0;
             globalScores.putIfAbsent(cId, new ArrayList<>());
             globalScores.get(cId).add(avg);
         }
@@ -271,6 +288,8 @@ public class RecommendationService {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        return cafes.stream().filter(c -> sortedIds.contains(c.getId())).collect(Collectors.toList());
+        return cafes.stream()
+                .filter(c -> sortedIds.contains(c.getId()))
+                .collect(Collectors.toList());
     }
 }
