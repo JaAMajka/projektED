@@ -17,13 +17,8 @@ import java.util.stream.Collectors;
 public class CafeReadModelService {
     private final CafeReadModelRepository cafeReadModelRepository;
 
-    public void recalculatePriceAverages(Long cafeId, List<AvgPriceProjection> averages){
+    void updatePriceData(Long cafeId, Map<BeverageType, BigDecimal> avgPrices) {
         CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
-        Map<BeverageType, BigDecimal> avgPrices = averages.stream()
-                .collect(Collectors.toMap(
-                        AvgPriceProjection::getType,
-                        AvgPriceProjection::getAvgPrice
-                ));
         cafeReadModel.setAvgBaggedTeaPrice(avgPrices.getOrDefault(BeverageType.BAGGED_TEA, null));
         cafeReadModel.setAvgCoffeePrice(avgPrices.getOrDefault(BeverageType.PURE_COFFEE, null));
         cafeReadModel.setAvgMatchaPrice(avgPrices.getOrDefault(BeverageType.MATCHA, null));
@@ -33,6 +28,16 @@ public class CafeReadModelService {
         cafeReadModel.setAvgOtherPrice(avgPrices.getOrDefault(BeverageType.OTHER, null));
         cafeReadModelRepository.save(cafeReadModel);
     }
+
+    public void recalculatePriceAverages(Long cafeId, List<AvgPriceProjection> averages) {
+        Map<BeverageType, BigDecimal> avgPrices = averages.stream()
+                .collect(Collectors.toMap(
+                        AvgPriceProjection::getType,
+                        AvgPriceProjection::getAvgPrice
+                ));
+        updatePriceData(cafeId, avgPrices);
+    }
+
 
     public void recalculateRateData(
             Long cafeId, BigDecimal avgAtmosphere,
