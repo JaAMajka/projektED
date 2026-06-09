@@ -18,7 +18,7 @@ public class EventConsumer {
 
     @RabbitListener(queues = RabbitMQConfig.MENU_ITEM_QUEUE)
     public void recalculateMenuItemData(Long cafeId){
-        cafeReadModelService.recalculatePriceAverages(cafeId, menuItemRepository.findAvgPricePerType(cafeId));
+        cafeReadModelService.recalculatePriceAverages(cafeId, menuItemRepository.findAvgPricePerTypeForCafe(cafeId));
         cafeReadModelService.updateHasIcedPropertyIfIcedItemAdded(cafeId, menuItemRepository.checkIfCafeHasIcedItems(cafeId));
         globalStatsService.updatePriceAverages(menuItemRepository.findAvgPricePerTypeGlobal());
     }
