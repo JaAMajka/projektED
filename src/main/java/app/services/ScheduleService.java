@@ -1,7 +1,7 @@
 package app.services;
 
 import app.Exceptions.CafeNotFoundException;
-import app.Exceptions.ScheduleDoesNotBelongToCafe;
+import app.Exceptions.ScheduleDoesNotBelongToCafeException;
 import app.Exceptions.ScheduleNotFoundException;
 import app.dtos.creating.CreateScheduleDTO;
 import app.dtos.responding.ResponseScheduleDTO;
@@ -36,7 +36,7 @@ public class ScheduleService {
         Cafe cafe = cafeRepository.findById(cafeId).orElseThrow(() -> new CafeNotFoundException("Cafe not found"));
         Schedule schedule =  scheduleRepository.findById(id).orElseThrow(() -> new ScheduleNotFoundException("Schedule not found"));
         if (!schedule.getCafe().equals(cafe)){
-            throw new ScheduleDoesNotBelongToCafe("This schedule does not belong to this cafe");
+            throw new ScheduleDoesNotBelongToCafeException("This schedule does not belong to this cafe");
         }
         return schedule;
     }

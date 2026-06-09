@@ -1,7 +1,7 @@
 package app.services;
 
-import app.Exceptions.EmailIsTaken;
-import app.Exceptions.PhoneNumberIsTaken;
+import app.Exceptions.EmailIsTakenException;
+import app.Exceptions.PhoneNumberIsTakenException;
 import app.Exceptions.UserNotFoundException;
 import app.Role;
 import app.dtos.creating.CreateUserDTO;
@@ -41,10 +41,10 @@ public class UserService {
     public User createUser(CreateUserDTO dto){
         User user = userMapper.toEntity(dto);
         if (userRepository.findUserByEmail(dto.email()).isPresent()) {
-            throw new EmailIsTaken("User with this email already exists");
+            throw new EmailIsTakenException("User with this email already exists");
         }
         if (userRepository.findUserByPhoneNumber(dto.phoneNumber()).isPresent()){
-            throw new PhoneNumberIsTaken("User with this phone number already exists");
+            throw new PhoneNumberIsTakenException("User with this phone number already exists");
         }
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         user.setRole(Role.USER);

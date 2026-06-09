@@ -23,7 +23,7 @@ public class GlobalStatsService {
                 .orElse(new GlobalStats());
         Map<BeverageType, BigDecimal> pricesMap = avgPricePerTypeGlobal.stream()
                         .collect(Collectors.toMap(
-                                AvgPriceProjection::getType,
+                                p -> BeverageType.valueOf(p.getType()),
                                 AvgPriceProjection::getAvgPrice
                         ));
 

@@ -22,6 +22,7 @@ public class BackFillService {
 
 
     public void backFillReadModel(){
+        /*
         List<GlobalStatsRateProjection> rates = rateRepository.findStatsForAllRates();
         rates.
                 forEach(
@@ -37,6 +38,7 @@ public class BackFillService {
                                 )
                         )
                 );
+        */
         List<AvgPricePerCafeProjection> prices = menuItemRepository.findAvgPricePerTypeForAllCafes();
         prices.stream()
                 .collect(Collectors.groupingBy(AvgPricePerCafeProjection::getCafeId))
