@@ -1,4 +1,5 @@
 package app.rabbit;
+import app.projections.StatsRateProjection;
 import app.repositories.MenuItemRepository;
 import app.repositories.RateRepository;
 import app.services.CafeReadModelService;
@@ -23,7 +24,16 @@ public class EventConsumer {
     }
     @RabbitListener(queues = RabbitMQConfig.RATE_QUEUE)
     public void recalculateRateData(Long cafeId){
-        cafeReadModelService.recalculateRateAverages(cafeId, rateRepository.findStatsByRate(cafeId).orElseThrow());
+        StatsRateProjection statsRateProjection = rateRepository.findStatsByRate(cafeId).orElseThrow();
+        cafeReadModelService.recalculateRateData(
+                cafeId,
+                statsRateProjection.getAvgBeverageScore(),
+                statsRateProjection.getAvgAtmosphereScore(),
+                statsRateProjection.getAvgServiceScore(),
+                statsRateProjection.getStdDevAtmosphere(),
+                statsRateProjection.getStdDevBeverage(),
+                statsRateProjection.getStdDevService()
+        );
     }
 
 

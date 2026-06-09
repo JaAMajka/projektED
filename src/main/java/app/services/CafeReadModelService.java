@@ -3,7 +3,6 @@ package app.services;
 import app.BeverageType;
 import app.models.CafeReadModel;
 import app.projections.AvgPriceProjection;
-import app.projections.StatsRateProjection;
 import app.repositories.CafeReadModelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,14 +34,22 @@ public class CafeReadModelService {
         cafeReadModelRepository.save(cafeReadModel);
     }
 
-    public void recalculateRateAverages(Long cafeId, StatsRateProjection data){
+    public void recalculateRateData(
+            Long cafeId, BigDecimal avgAtmosphere,
+            BigDecimal avgBeverage,
+            BigDecimal avgService,
+            BigDecimal stdAtmosphere,
+            BigDecimal stdBeverage,
+            BigDecimal stdService
+    )
+    {
         CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
-        cafeReadModel.setAvgAtmosphereScore(data.getAvgAtmosphereScore());
-        cafeReadModel.setAvgBeverageScore(data.getAvgBeverageScore());
-        cafeReadModel.setAvgServiceScore(data.getAvgServiceScore());
-        cafeReadModel.setStdDevAtmosphere(data.getStdDevAtmosphere());
-        cafeReadModel.setStdDevBeverage(data.getStdDevBeverage());
-        cafeReadModel.setStdDevService(data.getStdDevService());
+        cafeReadModel.setAvgAtmosphereScore(avgAtmosphere);
+        cafeReadModel.setAvgBeverageScore(avgBeverage);
+        cafeReadModel.setAvgServiceScore(avgService);
+        cafeReadModel.setStdDevAtmosphere(stdAtmosphere);
+        cafeReadModel.setStdDevBeverage(stdBeverage);
+        cafeReadModel.setStdDevService(stdService);
         cafeReadModelRepository.save(cafeReadModel);
     }
 
@@ -54,5 +61,6 @@ public class CafeReadModelService {
 
         cafeReadModelRepository.save(cafeReadModel);
     }
+
 
 }
