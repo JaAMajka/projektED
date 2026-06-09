@@ -2,6 +2,7 @@ package app.repositories;
 
 
 import app.models.Rate;
+import app.projections.GlobalStatsRateProjection;
 import app.projections.StatsRateProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,11 @@ public interface RateRepository extends JpaRepository<Rate, Long> {
             "AVG(r.serviceScore) AS avgService, STDDEV(r.serviceScore) AS stdDevService " +
             "FROM Rate r WHERE r.cafe.id = :cafeId")
     Optional<StatsRateProjection> findStatsByRate(Long cafeId);
+    @Query("SELECT " +
+            "r.cafe.id AS cafeId," +
+            "AVG(r.atmosphereScore) AS avgAtmosphere, STDDEV(r.atmosphereScore) AS stdDevAtmosphere, " +
+            "AVG(r.beverageScore) AS avgBeverage, STDDEV(r.beverageScore) AS stdDevBeverage, " +
+            "AVG(r.serviceScore) AS avgService, STDDEV(r.serviceScore) AS stdDevService " +
+            "FROM Rate r GROUP BY r.cafe.id")
+    Optional<GlobalStatsRateProjection> findStatsForAllRates();
 }
