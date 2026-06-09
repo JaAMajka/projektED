@@ -173,7 +173,6 @@ INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (24
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (24, 'FRIDAY', '07:30:00', '18:30:00');
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (24, 'SATURDAY', '08:00:00', '19:00:00');
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (24, 'SUNDAY', '08:00', '19:00');
-INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (25, 'MONDAY', 'closed', 'closed');
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (25, 'TUESDAY', '10:00:00', '20:00:00');
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (25, 'WEDNESDAY', '10:00:00', '20:00:00');
 INSERT INTO schedules (cafe_id, week_day, opening_hour, closing_hour) VALUES (25, 'THURSDAY', '10:00:00', '20:00:00');
