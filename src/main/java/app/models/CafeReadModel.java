@@ -32,6 +32,9 @@ public class CafeReadModel {
     private BigDecimal avgServiceScore;
     private BigDecimal avgAtmosphereScore;
     private Integer clusterId;
+    private BigDecimal stdDevAtmosphere;
+    private BigDecimal stdDevBeverage;
+    private BigDecimal stdDevService;
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp

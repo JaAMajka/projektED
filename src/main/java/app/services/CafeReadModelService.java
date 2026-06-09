@@ -3,7 +3,7 @@ package app.services;
 import app.BeverageType;
 import app.models.CafeReadModel;
 import app.projections.AvgPriceProjection;
-import app.projections.AvgRateProjection;
+import app.projections.StatsRateProjection;
 import app.repositories.CafeReadModelRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,11 +35,14 @@ public class CafeReadModelService {
         cafeReadModelRepository.save(cafeReadModel);
     }
 
-    public void recalculateRateAverages(Long cafeId, AvgRateProjection averages){
+    public void recalculateRateAverages(Long cafeId, StatsRateProjection data){
         CafeReadModel cafeReadModel = cafeReadModelRepository.findByCafeId(cafeId).orElseThrow();
-        cafeReadModel.setAvgAtmosphereScore(averages.getAvgAtmosphereScore());
-        cafeReadModel.setAvgBeverageScore(averages.getAvgBeverageScore());
-        cafeReadModel.setAvgServiceScore(averages.getAvgServiceScore());
+        cafeReadModel.setAvgAtmosphereScore(data.getAvgAtmosphereScore());
+        cafeReadModel.setAvgBeverageScore(data.getAvgBeverageScore());
+        cafeReadModel.setAvgServiceScore(data.getAvgServiceScore());
+        cafeReadModel.setStdDevAtmosphere(data.getStdDevAtmosphere());
+        cafeReadModel.setStdDevBeverage(data.getStdDevBeverage());
+        cafeReadModel.setStdDevService(data.getStdDevService());
         cafeReadModelRepository.save(cafeReadModel);
     }
 

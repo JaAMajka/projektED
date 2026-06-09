@@ -22,10 +22,9 @@ public class EventConsumer {
         globalStatsService.updatePriceAverages(menuItemRepository.findAvgPricePerTypeGlobal());
     }
     @RabbitListener(queues = RabbitMQConfig.RATE_QUEUE)
-    public void recalculateRateAverages(Long cafeId){
-        cafeReadModelService.recalculateRateAverages(cafeId, rateRepository.findAvgRate(cafeId).orElseThrow());
+    public void recalculateRateData(Long cafeId){
+        cafeReadModelService.recalculateRateAverages(cafeId, rateRepository.findStatsByRate(cafeId).orElseThrow());
     }
-
 
 
 
