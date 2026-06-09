@@ -26,5 +26,5 @@ public interface RateRepository extends JpaRepository<Rate, Long> {
             "AVG(r.beverageScore) AS avgBeverage, STDDEV(r.beverageScore) AS stdDevBeverage, " +
             "AVG(r.serviceScore) AS avgService, STDDEV(r.serviceScore) AS stdDevService " +
             "FROM Rate r GROUP BY r.cafe.id")
-    Optional<GlobalStatsRateProjection> findStatsForAllRates();
+    List<GlobalStatsRateProjection> findStatsForAllRates();
 }
