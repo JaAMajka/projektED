@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/cafes/**/menuItems/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/cafes/**/menuItems/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/cafes/**/menuItems/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/admin/").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(myUserDetailsService)
