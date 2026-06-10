@@ -35,7 +35,7 @@ public class CafeService {
     public ResponseCafeDTO getCafeDtoById(Long id){
         return cafeMapper.toDto(getCafeById(id));
     }
-    private Cafe getCafeById(Long id){
+    public Cafe getCafeById(Long id){
         return cafeRepository.findById(id).orElseThrow(() -> new CafeNotFoundException("This cafe does not exist"));
     }
     public void deleteCafeById(Long id){
