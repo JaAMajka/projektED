@@ -36,18 +36,22 @@ public class DataSeederService {
         for (int i = 0; i < 100; i++){
             User user = seedSingleUser(i);
             Profile userProfile = profiles.get(random.nextInt(0, 5));
+            user.setProfile(userProfile);
+            userRepository.save(user);
             for (CafeReadModel cafeReadModel : cafeReadModels) {
-                Integer atmosphereScore = generateScore(cafeReadModel.getAvgAtmosphereScore().doubleValue(), cafeReadModel.getStdDevAtmosphere().doubleValue(), userProfile.getAtmosphereBias());
-                Integer beverageScore = generateScore(cafeReadModel.getAvgBeverageScore().doubleValue(), cafeReadModel.getStdDevBeverage().doubleValue(), userProfile.getBeverageBias());
-                Integer serviceScore = generateScore(cafeReadModel.getAvgServiceScore().doubleValue(), cafeReadModel.getStdDevService().doubleValue(), userProfile.getServiceBias());
-                CreateRateDTO dto = new CreateRateDTO(
-                        atmosphereScore,
-                        beverageScore,
-                        serviceScore);
+                if(random.nextDouble(0, 1) < 0.6){
+                    Integer atmosphereScore = generateScore(cafeReadModel.getAvgAtmosphereScore().doubleValue(), cafeReadModel.getStdDevAtmosphere().doubleValue(), userProfile.getAtmosphereBias());
+                    Integer beverageScore = generateScore(cafeReadModel.getAvgBeverageScore().doubleValue(), cafeReadModel.getStdDevBeverage().doubleValue(), userProfile.getBeverageBias());
+                    Integer serviceScore = generateScore(cafeReadModel.getAvgServiceScore().doubleValue(), cafeReadModel.getStdDevService().doubleValue(), userProfile.getServiceBias());
+                    CreateRateDTO dto = new CreateRateDTO(
+                            atmosphereScore,
+                            beverageScore,
+                            serviceScore);
 
-                rateService.createRate(dto, cafeReadModel.getCafe().getId(), user.getId());
+                    rateService.createRate(dto, cafeReadModel.getCafe().getId(), user.getId());
+                }
+
             }
-
 
 
         }

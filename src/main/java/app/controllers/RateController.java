@@ -71,4 +71,5 @@ public class RateController {
     public ResponseEntity<List<ResponseRateDTO>> getRatesByCafeId(@PathVariable Long cafeId) {
         return new ResponseEntity<>(rateService.getRatesByCafeId(cafeId), HttpStatus.OK);
     }
+
 }

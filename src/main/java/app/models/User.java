@@ -1,6 +1,7 @@
 package app.models;
 
 import app.Role;
+import app.profiles.Profile;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,4 +33,6 @@ public class User {
     private Role role;
     @OneToMany(mappedBy = "user")
     private List<Recommendation> recommendations;
+    @Enumerated(EnumType.STRING)
+    private Profile profile;
 }
