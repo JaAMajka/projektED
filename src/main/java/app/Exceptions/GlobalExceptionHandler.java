@@ -65,7 +65,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({
             EmailIsTakenException.class,
             CafeAlreadyExistsException.class,
-            ItemAlreadyBelongsToCafeException.class,
             PhoneNumberIsTakenException.class
     }
     )

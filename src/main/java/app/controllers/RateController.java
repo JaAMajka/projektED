@@ -62,8 +62,9 @@ public class RateController {
     }
     @PostMapping
     public ResponseEntity<ResponseRateDTO> createRate(@PathVariable Long cafeId, @Valid @RequestBody CreateRateDTO dto){
-        Rate rate = rateService.createRate(dto);
-        ResponseRateDTO rateDTO =  rateService.getRateDtoById(cafeId, rate.getId());
+        MyUserDetails currentUser = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Rate rate = rateService.createRate(dto, cafeId, currentUser.getId());
+        ResponseRateDTO rateDTO =  rateService.getRateDtoById(rate.getId(), cafeId);
         return new ResponseEntity<>(rateDTO, HttpStatus.CREATED);
     }
     @GetMapping

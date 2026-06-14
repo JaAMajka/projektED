@@ -14,9 +14,10 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface ScheduleMapper {
-    @Mapping(target = "cafe", ignore = true)
     Schedule toEntity(CreateScheduleDTO dto);
     void updateScheduleFromDto(UpdateScheduleDTO dto, @MappingTarget Schedule schedule);
+    @Mapping(source = "cafe.name", target = "cafeName")
+    @Mapping(source = "cafe.address", target = "cafeAddress")
     ResponseScheduleDTO toDto(Schedule schedule);
 
 }

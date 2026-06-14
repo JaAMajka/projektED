@@ -15,16 +15,16 @@ public interface RateRepository extends JpaRepository<Rate, Long> {
     List<Rate> findAllByCafeId(Long cafeId);
 
     @Query("SELECT " +
-            "AVG(r.atmosphereScore) AS avgAtmosphere, STDDEV(r.atmosphereScore) AS stdDevAtmosphere, " +
-            "AVG(r.beverageScore) AS avgBeverage, STDDEV(r.beverageScore) AS stdDevBeverage, " +
-            "AVG(r.serviceScore) AS avgService, STDDEV(r.serviceScore) AS stdDevService " +
+            "AVG(r.atmosphereScore) AS avgAtmosphereScore, STDDEV(r.atmosphereScore) AS stdDevAtmosphere, " +
+            "AVG(r.beverageScore) AS avgBeverageScore, STDDEV(r.beverageScore) AS stdDevBeverage, " +
+            "AVG(r.serviceScore) AS avgServiceScore, STDDEV(r.serviceScore) AS stdDevService " +
             "FROM Rate r WHERE r.cafe.id = :cafeId")
     Optional<StatsRateProjection> findStatsByRate(Long cafeId);
     @Query("SELECT " +
             "r.cafe.id AS cafeId," +
-            "AVG(r.atmosphereScore) AS avgAtmosphere, STDDEV(r.atmosphereScore) AS stdDevAtmosphere, " +
-            "AVG(r.beverageScore) AS avgBeverage, STDDEV(r.beverageScore) AS stdDevBeverage, " +
-            "AVG(r.serviceScore) AS avgService, STDDEV(r.serviceScore) AS stdDevService " +
+            "AVG(r.atmosphereScore) AS avgAtmosphereScore, STDDEV(r.atmosphereScore) AS stdDevAtmosphere, " +
+            "AVG(r.beverageScore) AS avgBeverageScore, STDDEV(r.beverageScore) AS stdDevBeverage, " +
+            "AVG(r.serviceScore) AS avgServiceScore, STDDEV(r.serviceScore) AS stdDevService " +
             "FROM Rate r GROUP BY r.cafe.id")
     List<GlobalStatsRateProjection> findStatsForAllRates();
 }

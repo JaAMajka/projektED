@@ -11,8 +11,10 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface MenuItemMapper {
-    @Mapping(target = "cafe", ignore = true)
     MenuItem toEntity(CreateMenuItemDTO dto);
     void updateMenuItemFromDto(UpdateMenuItemDTO dto, @MappingTarget MenuItem menuItem);
+    @Mapping(source = "cafe.name", target = "cafeName")
+    @Mapping(source = "cafe.address", target = "cafeAddress")
+    @Mapping(source = "type", target = "type")
     ResponseMenuItemDTO toDto(MenuItem menuItem);
 }

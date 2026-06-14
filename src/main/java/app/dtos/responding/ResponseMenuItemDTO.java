@@ -7,9 +7,11 @@ import java.math.BigDecimal;
 public record ResponseMenuItemDTO(
         Long id,
         Long cafeId,
+        String cafeName,
+        String cafeAddress,
         String name,
         BigDecimal price,
-        String beverageType,
+        String type,
         Enum<AvailableSize> size,
         Boolean isAppendage,
         Boolean isIced,

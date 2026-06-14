@@ -12,10 +12,12 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface RecommendationMapper {
-    @Mapping (target = "cafe", ignore = true)
-    @Mapping( target = "user", ignore = true)
+
     Recommendation toEntity(CreateRecommendationDTO dto);
     void updateRecommendationFromDto(UpdateRecommendationDTO dto, @MappingTarget  Recommendation recommendation);
+    @Mapping(source = "cafe.name", target = "cafeName")
+    @Mapping(source = "cafe.address", target = "cafeAddress")
+    @Mapping(source = "user.name", target = "userName")
     ResponseRecommendationDTO toDto(Recommendation recommendation);
 
 }
